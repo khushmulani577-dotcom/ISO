@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0d0d11">
+  <meta name="description" content="ISO — private voice intelligence. Your voice. Our intelligence.">
+  <title>ISO — Private Voice Intelligence</title>
+  <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./style.css">
+  <script src="./script.js" defer></script>
+</head>
+<body>
+  <div class="loader" id="loader" aria-live="polite">
+    <a class="brand loader-brand" href="#" aria-label="ISO"><img src="./assets/iso-logo.svg" alt="ISO"></a>
+    <div class="loader-orbit" aria-hidden="true"><i></i><i></i><i></i></div>
+    <p>Initializing Intelligence</p>
+  </div>
+
+  <main id="app" class="app" aria-live="polite">
+    <section class="screen login-screen" id="loginScreen" aria-labelledby="loginTitle">
+      <div class="login-brand"><img src="./assets/iso-logo.svg" alt="ISO"><span>PRIVATE VOICE INTELLIGENCE</span></div>
+      <div class="login-layout">
+        <div class="login-copy">
+          <p class="eyebrow">YOUR VOICE. OUR INTELLIGENCE.</p>
+          <h1 id="loginTitle">A quieter way<br>to think out loud.</h1>
+          <p class="intro">A private voice intelligence experience designed to listen clearly, think intelligently and respond naturally.</p>
+          <div class="login-foot"><span class="privacy-dot"></span> Private by design <span class="foot-separator">/</span> Protected access</div>
+        </div>
+        <form class="login-form" id="loginForm">
+          <div class="form-heading"><span class="eyebrow">A PRIVATE SPACE</span><h2>Welcome to ISO</h2><p>Enter your registered details to continue.</p></div>
+          <label for="mobile">Registered Mobile Number</label>
+          <input id="mobile" name="mobile" autocomplete="username" inputmode="numeric" placeholder="Your mobile number" required>
+          <label for="password">Password</label>
+          <div class="password-wrap"><input id="password" name="password" type="password" autocomplete="current-password" placeholder="Your password" required><button type="button" class="reveal" id="revealPassword" aria-label="Show password">SHOW</button></div>
+          <button class="button button-light access-button" type="submit">ACCESS ISO <span aria-hidden="true">↗</span></button>
+          <p class="login-error" id="loginError" role="alert"></p>
+          <p class="form-note"><span class="lock-icon" aria-hidden="true">⌑</span> 10 registered users <span>•</span> Protected access</p>
+        </form>
+      </div>
+      <div class="login-bottom"><span>ISO © 2026</span><span>ENGLISH · PRIVATE SESSION</span></div>
+    </section>
+
+    <section class="screen home-screen hidden" id="homeScreen" aria-label="ISO Voice">
+      <header class="topbar"><a class="brand" href="#" aria-label="ISO home"><img src="./assets/iso-logo.svg" alt="ISO"></a><div class="top-actions"><span class="secure-label"><i></i> PRIVATE SESSION</span><button class="user-button" id="userButton" aria-label="Open account settings"><span class="avatar" id="avatar">U</span><span id="userName">User 01</span><span class="chevron">⌄</span></button></div></header>
+      <div class="environment">
+        <div class="voice-column">
+          <div class="core-wrap" id="coreWrap" data-state="idle" aria-hidden="true">
+            <div class="ring ring-one"></div><div class="ring ring-two"></div><div class="ring ring-three"></div>
+            <div class="core-aura"></div><div class="core-disc"><div class="core-wave"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div></div>
+            <div class="core-point point-a"></div><div class="core-point point-b"></div>
+          </div>
+          <p class="state-label" id="stateLabel"><i></i><span>Ready when you are.</span></p>
+          <div class="home-heading"><p class="eyebrow" id="greeting">GOOD EVENING, USER 01</p><h1>What would you like<br>to explore?</h1><p class="home-subtitle">A thought, a question, a new direction.</p></div>
+          <div class="voice-controls"><button class="button button-light start-button" id="startButton"><span class="start-symbol">◉</span> START ISO</button><button class="button button-outline stop-button hidden" id="stopButton">STOP ISO <span>Ⅱ</span></button><button class="text-link" id="typeInstead">Type instead <span>↘</span></button></div>
+          <p class="voice-hint" id="voiceHint">A private conversation, at your pace.</p>
+        </div>
+        <aside class="conversation-column" aria-label="Conversation">
+          <div class="conversation-head"><div><p class="eyebrow">YOUR SESSION</p><h2>Conversation</h2></div><button class="icon-button" id="newConversation" title="New conversation" aria-label="New conversation">↗</button></div>
+          <div class="transcript" id="transcript"><div class="empty-session"><span class="empty-glyph">◌</span><p>Your conversation will appear here.</p><span>Nothing leaves this private session.</span></div></div>
+          <form class="composer" id="messageForm"><input id="messageInput" aria-label="Type a message" placeholder="Type a message…" autocomplete="off"><button type="submit" aria-label="Send message">SEND <span>↗</span></button></form>
+          <div class="conversation-foot"><span><i></i> AI CONNECTION SECURE</span><span>ENGLISH ONLY</span></div>
+        </aside>
+      </div>
+      <footer class="home-footer"><span>ISO · PRIVATE VOICE INTELLIGENCE</span><span>LISTEN CLEARLY. THINK FREELY.</span></footer>
+      <div class="settings-backdrop hidden" id="settingsBackdrop"></div>
+      <aside class="settings-panel" id="settingsPanel" aria-label="Settings" aria-hidden="true">
+        <div class="settings-head"><div><p class="eyebrow">YOUR ISO</p><h2>Settings</h2></div><button class="icon-button" id="closeSettings" aria-label="Close settings">×</button></div>
+        <section class="setting-section"><h3>Voice</h3><label for="voiceSelect">Voice selection</label><select id="voiceSelect"><option value="">System default</option></select><div class="setting-range"><label for="speed">Speech speed</label><output id="speedOut">1.0×</output></div><input id="speed" type="range" min="0.75" max="1.25" step="0.05" value="1"><div class="setting-range"><label for="volume">Volume</label><output id="volumeOut">80%</output></div><input id="volume" type="range" min="0" max="1" step="0.05" value="0.8"></section>
+        <section class="setting-section"><h3>Audio</h3><label class="toggle-row">Noise suppression <input id="noiseSuppression" type="checkbox" checked><span></span></label><label class="toggle-row">Echo cancellation <input id="echoCancellation" type="checkbox" checked><span></span></label><label class="toggle-row">Automatic gain <input id="autoGain" type="checkbox" checked><span></span></label><div class="setting-range"><label for="sensitivity">Voice sensitivity</label><output id="sensitivityOut">Medium</output></div><input id="sensitivity" type="range" min="1" max="3" step="1" value="2"></section>
+        <section class="setting-section"><h3>Language & privacy</h3><div class="info-row"><span>Language</span><strong>English only</strong></div><div class="info-row"><span>Microphone</span><strong id="micStatus">Off</strong></div><div class="info-row"><span>Session</span><strong>Private · Current session</strong></div><div class="info-row"><span>Conversation storage</span><strong>Not saved</strong></div></section>
+        <section class="setting-section account-setting"><h3>Account</h3><div class="info-row"><span>Signed in as</span><strong id="accountName">User 01</strong></div><button class="logout-button" id="logoutButton">LOG OUT <span>↗</span></button></section>
+      </aside>
+      <div class="toast" id="toast" role="status"></div>
+    </section>
+  </main>
+</body>
+</html>
